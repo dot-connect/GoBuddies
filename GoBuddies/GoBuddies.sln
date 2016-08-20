@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoBuddies.Server.Data", "GoBuddies.Server.Data\GoBuddies.Server.Data.csproj", "{BDD48F3E-8C4C-4B4A-92CF-7304984F1E49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoBuddies.Server.WebApi", "GoBuddies.Server.WebApi\GoBuddies.Server.WebApi.csproj", "{C0DA4DA2-1904-4219-9F3A-5B9B7098811E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoBuddies.Server.WebApi", "GoBuddies.Server.WebApi\GoBuddies.Server.WebApi.csproj", "{D5BDED9C-C3AF-412B-94FB-9B39608B4826}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{BDD48F3E-8C4C-4B4A-92CF-7304984F1E49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDD48F3E-8C4C-4B4A-92CF-7304984F1E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDD48F3E-8C4C-4B4A-92CF-7304984F1E49}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C0DA4DA2-1904-4219-9F3A-5B9B7098811E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C0DA4DA2-1904-4219-9F3A-5B9B7098811E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C0DA4DA2-1904-4219-9F3A-5B9B7098811E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C0DA4DA2-1904-4219-9F3A-5B9B7098811E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5BDED9C-C3AF-412B-94FB-9B39608B4826}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5BDED9C-C3AF-412B-94FB-9B39608B4826}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5BDED9C-C3AF-412B-94FB-9B39608B4826}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5BDED9C-C3AF-412B-94FB-9B39608B4826}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
