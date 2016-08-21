@@ -1,15 +1,18 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using GoBuddies.Server.Data;
+using GoBuddies.Server.Data.DbModels;
+using GoBuddies.Services;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.Swagger.Model;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GoBuddies.Server.WebApi
 {
@@ -40,8 +43,11 @@ namespace GoBuddies.Server.WebApi
             // Add framework services.
             ////services.AddApplicationInsightsTelemetry(Configuration);
 
+            // add ef
+            services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase());
+
             // add swagger
-            services.AddSwaggerGen();
+           services.AddSwaggerGen();
             services.ConfigureSwaggerGen(options =>
             {
                 options.SingleApiVersion(new Info
@@ -57,7 +63,21 @@ namespace GoBuddies.Server.WebApi
                 options.DescribeAllEnumsAsStrings();
             });
 
+            // config identity
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.Cookies.ApplicationCookie.AuthenticationScheme = "ApplicationCookie";
+                options.Cookies.ApplicationCookie.CookieName = "Interop";
+                options.Cookies.ApplicationCookie.DataProtectionProvider = DataProtectionProvider.Create(new DirectoryInfo(@"C:\Identities"));
+            })
+               .AddEntityFrameworkStores<ApplicationDbContext>()
+               .AddDefaultTokenProviders();
+
             services.AddMvc();
+
+            // Add application services.
+            services.AddTransient<IEmailSender, AuthMessageSender>();
+            services.AddTransient<ISmsSender, AuthMessageSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
@@ -76,6 +96,8 @@ namespace GoBuddies.Server.WebApi
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseIdentity();
 
             app.UseSwagger();
             app.UseSwaggerUi();
