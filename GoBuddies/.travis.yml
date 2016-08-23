@@ -1,0 +1,5 @@
+language: csharp
+solution: ./GoBuddies/GoBuddies.sln
+install:
+  - sudo apt-get install -y gtk-sharp2
+  - nuget restore ./GoBuddies/GoBuddies.sln
